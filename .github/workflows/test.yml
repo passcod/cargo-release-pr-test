@@ -20,6 +20,6 @@ jobs:
       - uses: cargo-bins/release-pr@v1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          version: patch
+          version: ${{ inputs.version }}
           pr-release-notes: true
           pr-merge-strategy: bors
