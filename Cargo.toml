@@ -1,8 +1,28 @@
-[package]
-name = "cargo-release-pr-test"
-version = "0.1.0"
-edition = "2021"
+[workspace]
+members = [
+    "crates/one",
+    "crates/two",
+]
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = "symbols"
 
-[dependencies]
+[profile.dev.build-override]
+opt-level = 0
+codegen-units = 1024
+debug = false
+debug-assertions = false
+overflow-checks = false
+incremental = false
+
+[profile.release.build-override]
+opt-level = 0
+codegen-units = 1024
+debug = false
+debug-assertions = false
+overflow-checks = false
+incremental = false
