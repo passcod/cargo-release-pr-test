@@ -17,10 +17,9 @@ jobs:
           tool: cargo-release
 
       - uses: actions/checkout@v3
-        with:
-          ref: main
-
       - uses: cargo-bins/release-pr@v1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          version: ${{ inputs.version }}
+          version: patch
+          pr-release-notes: true
+          pr-merge-strategy: bors
