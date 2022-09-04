@@ -7,9 +7,9 @@ on:
         required: true
         type: choice
         options:
-          - cargo-release-pr-test-one
-          - cargo-release-pr-test-two
-          - root-package
+          - crates/one
+          - crates/two
+          - .
       version:
         description: Version to release
         required: true
@@ -29,5 +29,6 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           version: ${{ inputs.version }}
+          crate-path: ${{ inputs.crate }}
           pr-release-notes: true
           pr-merge-strategy: bors
