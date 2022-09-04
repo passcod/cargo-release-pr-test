@@ -8,7 +8,7 @@ version = "0.1.0"
 
 [[package]]
 name = "cargo-release-pr-test-two"
-version = "2.1.0"
+version = "3.0.0"
 dependencies = [
  "cargo-release-pr-test-one",
 ]
