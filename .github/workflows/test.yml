@@ -9,6 +9,7 @@ on:
         options:
           - cargo-release-pr-test-one
           - cargo-release-pr-test-two
+          - root-package
       version:
         description: Version to release
         required: true
