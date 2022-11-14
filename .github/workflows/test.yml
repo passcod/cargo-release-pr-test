@@ -29,11 +29,11 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           version: ${{ inputs.version }}
-          #crate-name: ${{ inputs.crate }}
-          crate-release-all: true
+          crate-name: ${{ inputs.crate }}
+          #crate-release-all: true
           #check-semver: true
           #pr-template-file: .github/release-pr-template.ejs
           #pr-template: "It's a release bro (<%= version.actual %>)"
-          #pr-title: "Release <%= crate.name %> <%= version.actual %> (was <%= version.previous %>)"
+          pr-title: "Release <%= crate.name %> <%= version.actual %> (was <%= version.previous %>)"
           pr-release-notes: true
-          pr-merge-strategy: bors
+          pr-merge-strategy: squash
