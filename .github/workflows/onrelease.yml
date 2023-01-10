@@ -19,7 +19,6 @@ jobs:
     - id: meta
       uses: cargo-bins/release-meta@v1
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
         event-data: ${{ toJSON(github.event) }}
         extract-notes-under: '### Release notes'
 
