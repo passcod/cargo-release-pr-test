@@ -8,14 +8,13 @@ jobs:
   info:
     if: github.event.pull_request.merged
     outputs:
-      is-release: ${{ steps.meta.outputs.is-release }}
+      go: ${{ steps.meta.outputs.is-release }}
       crate: ${{ steps.meta.outputs.crate-names }}
       version: ${{ steps.meta.outputs.version-actual }}
       notes: ${{ steps.meta.outputs.notes }}
 
     runs-on: ubuntu-latest
     steps:
-    - run: echo '${{ toJSON(github.event) }}'
     - id: meta
       uses: cargo-bins/release-meta@v1
       with:
@@ -24,7 +23,7 @@ jobs:
 
   release:
     needs: info
-    if: needs.info.is-release == 'true'
+    if: needs.info.go == 'true'
 
     strategy:
       fail-fast: false
