@@ -23,7 +23,7 @@ jobs:
 
   release:
     needs: info
-    if: needs.info.go == 'true'
+    #if: needs.info.go == 'true'
 
     strategy:
       fail-fast: false
@@ -39,6 +39,7 @@ jobs:
     name: ${{ matrix.t }}
     runs-on: ${{ matrix.o }}
     steps:
+    - run: echo ${{ needs.info.outputs.go }}
     - uses: actions/checkout@v3
     #- uses: cargo-bins/release-rust
     #  with:
