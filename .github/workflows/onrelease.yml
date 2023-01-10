@@ -6,7 +6,7 @@ on:
 
 jobs:
   info:
-    if: github.event.merged == true
+    #if: github.event.merged == true
     outputs:
       is-release: ${{ steps.meta.outputs.is-release }}
       crate: ${{ steps.meta.outputs.crate-names }}
@@ -15,6 +15,7 @@ jobs:
 
     runs-on: ubuntu-latest
     steps:
+    - run: echo '${{ toJSON(github.event) }}'
     - id: meta
       uses: cargo-bins/release-meta@v1
       with:
