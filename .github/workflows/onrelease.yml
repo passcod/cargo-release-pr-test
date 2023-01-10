@@ -6,7 +6,7 @@ on:
 
 jobs:
   info:
-    #if: github.event.merged == true
+    if: ${{ github.event.pull_request.merged }}
     outputs:
       is-release: ${{ steps.meta.outputs.is-release }}
       crate: ${{ steps.meta.outputs.crate-names }}
