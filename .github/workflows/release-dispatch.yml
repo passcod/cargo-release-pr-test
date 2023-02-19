@@ -1,30 +1,9 @@
-name: Release a crate
+name: Test release-rust
 on:
-  pull_request:
-    types: closed
-    branches: [main]
+  workflow_dispatch:
 
 jobs:
-  info:
-    if: github.event.pull_request.merged
-    outputs:
-      is-release: ${{ steps.meta.outputs.is-release }}
-      crate: ${{ steps.meta.outputs.crate-names }}
-      version: ${{ steps.meta.outputs.version-actual }}
-      notes: ${{ steps.meta.outputs.notes }}
-
-    runs-on: ubuntu-latest
-    steps:
-    - id: meta
-      uses: cargo-bins/release-meta@v1
-      with:
-        event-data: ${{ toJSON(github.event) }}
-        extract-notes-under: '### Release notes'
-
   release:
-    needs: info
-    if: needs.info.outputs.is-release == 'true'
-
     strategy:
       fail-fast: false
       matrix:
